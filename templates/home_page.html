@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+        {% load static %}
+    <link href="{% static 'bootstrap-5.1.3-examples/assets/dist/css/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
+    {%  block name %}
+    <title>Главная Страница</title>
+    {% endblock %}
+</head>
+<body>
+
+<script src="{% static 'bootstrap-5.1.3-examples/assets/dist/js/bootstrap.bundle.min.js'%}"  crossorigin="anonymous"></script>
+
+<div class="container">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home_page' %}">Вернуться домой</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Профиль
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Регистрация</a></li>
+            <li><a class="dropdown-item" href="#">Добавить публикацию</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Выйти</a></li>
+          </ul>
+        </li>
+
+      </ul>
+             <form  class="d-flex" method="get">
+      <input formmethod="get" class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" name = "search">
+      <button class="btn btn-outline-success" type="submit">Найти</button>
+        </form>
+    </div>
+  </div>
+</nav>
+{% block table %}
+<table class = "table table-hover">
+    <thead>
+        <tr>
+        <td >Имя </td>
+        <td>Категория</td>
+        <td>Автор</td>
+        <td>О чем</td>
+        </tr>
+    </thead>
+    {% for publication in pubplications %}
+    <tbody>
+        <tr>
+        <td><a href="{%  url 'publication' publication.id %}">
+        {{ publication.title }}
+        </a></td>
+        <td>{{ publication.category }}</td>
+        <td>{{ publication.author.first_name }}  {{ publication.author.last_name }}</td>
+        <td>{{ publication.synopsis }}
+        </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+    </table>
+{% endblock %}
+</div>
+
+</body>
+</html>

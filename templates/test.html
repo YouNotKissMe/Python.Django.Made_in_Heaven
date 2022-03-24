@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'home_page.html' %}
+    <meta charset="UTF-8">
+    {% block bootstrapcss %}
+    {% endblock %}
+    <title>Главная Страница</title>
+</head>
+<body>
+{% block bootstrapjs %}
+{% endblock %}
+<div class="container">
+    {% block navbar %}
+    {% endblock %}
+<table class = "table table-bordered border-primary">
+        <thead>
+        <tr>
+        <td >Имя</td>
+        <td>Категория</td>
+        <td>Автор</td>
+        <td>О чем</td>
+        </tr>
+        </thead>
+    <tbody>
+
+        <tr>
+        <td>
+
+        <h2>Маугли</h2>
+        </td>
+        <td><h2>книга</h2></td>
+        <td><h2>я</h2></td>
+        <td><h2>очень круто</h2>
+        </td>
+        </tr>
+
+    </tbody>
+    </table>
+</div>
+
+</body>
+</html>

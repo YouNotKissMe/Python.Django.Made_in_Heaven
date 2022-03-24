@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'home_page.html' %}
+    <meta charset="UTF-8">
+   {% block name %}
+    <title>{{ publication.title }}</title>
+    {% endblock %}
+</head>
+<body>
+
+    {% block table %}
+
+
+    <div class="container">
+
+    <h1 class="text-center">{{ publication.title }}</h1>
+        
+        <h2 class="text-sm-end">Категория : {{ publication.category }}</h2>
+        <h2 class="text-sm-end">Автор : {{ publication.author }}</h2>
+        <h2 class="text-sm-end">Дата публикации : {{ publication.date }}</h2>
+        <h2 class="text-center">{{ publication.synopsis }}</h2>
+        <a class="text-center" href="{{ publication.file.url }}" download = "mmm"><h1>Скачать фаил</h1></a>
+    {% endblock %}
+        </div>
+</body>
+</html>
