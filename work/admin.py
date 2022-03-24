@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import Publication
 
-# Register your models here.
+
+class PublicationAdmin(admin.ModelAdmin):
+    search_fields = ('title',)
+    list_display = ('title', 'category', 'author')
+
+
+admin.site.register(Publication, PublicationAdmin)
