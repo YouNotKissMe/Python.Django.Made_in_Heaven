@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from .models import Publication
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+from .form import PublictionForm
+
 
 
 def home(request):
@@ -27,3 +31,12 @@ def publication(request, id):
     except:
         publication = Publication.objects.all()
         return render(request, 'home_page.html', {'pubplications': publication})
+
+
+class PublicationView(CreateView):
+    template_name = 'add_publication_page.html'
+    form_class = PublictionForm
+    model = Publication
+    success_url = reverse_lazy('home_page')
+
+
