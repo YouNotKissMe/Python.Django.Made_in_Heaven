@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'home_page.html' %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class='container'>
+        {% block table %}
+    {% if request.user.is_authenticated %}
+    <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+        <input type="submit" value="Добавить">
+    </form>
+            {% else %}
+            <meta http-equiv="refresh" content="0;{% url 'home_page' %}">
+            {% endif %}
+        {% endblock %}
+    </div>
+</body>
+</html>

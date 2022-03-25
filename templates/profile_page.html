@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'home_page.html' %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class = 'container'>
+        {% block table %}
+            {{ user.first_name }}
+            {{ user.last_name }}
+        <table class = "table table-hover">
+    <thead>
+        <tr>
+        <td >Имя </td>
+        <td>Категория</td>
+        <td>О чем</td>
+        </tr>
+    </thead>
+    {% for publication in publication %}
+    <tbody>
+        <tr>
+        <td><a href="{%  url 'publication' publication.id %}">
+        {{ publication.title }}
+        </a></td>
+        <td>{{ publication.category }}</td>
+        <td>{{ publication.synopsis }}
+        </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+    </table>
+        {% endblock %}
+
+    </div>
+</body>
+</html>
