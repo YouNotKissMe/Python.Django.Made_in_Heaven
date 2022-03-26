@@ -19,13 +19,12 @@ from work.views import home
 from django.conf.urls.static import static
 from django.conf import settings
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home, name='home_page'),
     path('publication/', include('work.urls')),
 
-    path('account/',include('user_app.urls'),name='profile')
+    path('account/', include('user_app.urls'), name='profile')
 
 ]
 
