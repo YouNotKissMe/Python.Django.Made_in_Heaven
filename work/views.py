@@ -2,8 +2,7 @@ from django.shortcuts import render
 from .models import Publication
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from .form import PublictionForm, Registration_form
-from django.contrib.auth.models import User
+from .form import PublictionForm
 
 
 def home(request):
@@ -33,12 +32,12 @@ def publication(request, id):
         return render(request, 'home_page.html', {'pubplications': publication})
 
 
-def profile(request):
-    if request.user.is_authenticated:
-        publication = Publication.objects.filter(author__last_login=request.user.last_login)
-        return render(request, 'profile_page.html', {'user': request.user, 'publication': publication})
-    else:
-        return render(request, 'registration/login.html')
+# def profile(request):
+#     if request.user.is_authenticated:
+#         publication = Publication.objects.filter(author__last_login=request.user.last_login)
+#         return render(request, 'profile_page.html', {'user': request.user, 'publication': publication})
+#     else:
+#         return render(request, 'registration/login.html')
 
 
 class PublicationView(CreateView):
@@ -48,8 +47,8 @@ class PublicationView(CreateView):
     success_url = reverse_lazy('home_page')
 
 
-class RegistrationView(CreateView):
-    template_name = 'registration_page.html'
-    form_class = Registration_form
-    model = User
-    success_url = reverse_lazy('home_page')
+# class RegistrationView(CreateView):
+#     template_name = 'registration_page.html'
+#     form_class = Registration_form
+#     model = User
+#     success_url = reverse_lazy('home_page')
