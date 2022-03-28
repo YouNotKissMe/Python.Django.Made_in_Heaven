@@ -14,6 +14,8 @@
     {{ form.as_p }}
         <input type="submit" value="Добавить">
     </form>
+            <h1>У вас нет аккаунта ?</h1>
+            <a  href="{% url 'reg' %}">Срочно зарегестрироваться</a>
         {% endblock %}
     </div>
 </body>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'home_page.html' %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class = 'container'>
+{% block table %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите название</label><br>
+            <input type="text" name="title" value="titile" />
+        </p>
+        <p>
+            <label>Введите описание</label><br>
+            <input type="number" name="synopsis" value="synopsis" />
+        </p>
+        <p>
+            <label>Выберете фаил</label><br>
+            <input type="file" name="file" value="file" />
+        </p>
+{#        <p>#}
+{#            <label>Категория</label><br>#}
+{#            <input type="text" name="category" value="category" list="namecategory" />#}
+{#            <datalist id="namecategory">#}
+{#                {% for i in pro %}#}
+{#                <option value="{{  }}">#}
+{#            </datalist>#}
+{#        </p>#}
+        <input type="submit" value="Сохранить" >
+    </form>
+    {% endblock %}
+
+
+</div>
+</body>
+</html>

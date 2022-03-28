@@ -19,3 +19,32 @@ def profile(request):
         return render(request, 'profile_page.html', {'user': request.user, 'publication': publication})
     else:
         return render(request, 'registration/login.html')
+
+
+def delete(request, id):
+    if request.user.is_authenticated:
+        publication = Publication.objects.get(id=id)
+        publication.delete()
+        new_publications = Publication.objects.filter(author__last_login=request.user.last_login)
+        return render(request, "profile_page.html", {'publication': new_publications})
+    else:
+        return render(request, "registration/login.html")
+
+
+def edit(request, id):
+    if request.user.is_authenticated:
+        publication = Publication.objects.get(id=id)
+        if request.method == 'POST':
+            if request.POST.get('title'):
+                publication.title = request.POST.get('title')
+            if request.POST.get('category'):
+                publication.category = request.POST.get('category')
+            if request.POST.get('synopsis'):
+                publication.synopsis = request.POST.get('synopsis')
+            if request.POST.get('file'):
+                publication.title = request.POST.get('file')
+            publication.save()
+            publications = Publication.objects.all()
+            return render(request, "profile_page.html", {'publications': publications})
+    else:
+        return render(request, "registration/login.html")

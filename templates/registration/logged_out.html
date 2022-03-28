@@ -3,13 +3,20 @@
 <head>
       {% extends 'home_page.html' %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    {% block name %}
+    <title>Выход</title>
+    {% endblock %}
 </head>
 <body>
     <div class="container">
         {% block table %}
-    You are logged out!
-    <a  href="{% url 'login' %}">Log in again</a>
+            <div class = 'row gy-5'>
+            <div class="text-lg-center">
+            <h1>Вы вышли из своего профиля</h1>
+            <a  href="{% url 'login' %}">войти</a>
+            </div>
+            </div>
+
         {% endblock %}
     </div>
 

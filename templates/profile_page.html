@@ -8,14 +8,15 @@
 <body>
     <div class = 'container'>
         {% block table %}
-            {{ user.first_name }}
-            {{ user.last_name }}
+           <h1 class="text-sm-end"> Имя: {{ user.first_name }} </h1>
+           <h1 class="text-sm-end"> Фамилия: {{ user.last_name }}</h1>
         <table class = "table table-hover">
     <thead>
         <tr>
         <td >Имя </td>
         <td>Категория</td>
         <td>О чем</td>
+        <td>Действия</td>
         </tr>
     </thead>
     {% for publication in publication %}
@@ -27,10 +28,16 @@
         <td>{{ publication.category }}</td>
         <td>{{ publication.synopsis }}
         </td>
+            <td><td><a href="{%  url 'publication' publication.id %}">Изменить</a>
+            <a href="{%  url 'delete' publication.id %}">Удалить</a>
+        </td>
         </tr>
     </tbody>
     {% endfor %}
     </table>
+
+            <a class="text-center" href="{%  url 'add_publication' %}"><h1>Добавить запись</h1></a>
+
         {% endblock %}
 
     </div>

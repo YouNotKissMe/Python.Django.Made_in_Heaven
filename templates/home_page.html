@@ -26,12 +26,18 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Профиль
           </a>
+
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{% url 'reg' %}">Регистрация</a></li>
-            <li><a class="dropdown-item" href="#">Добавить публикацию</a></li>
+              {% if request.user.is_authenticated %}
+              <li><a class="dropdown-item" href="{% url 'profile' %}">Личный кабинет</a></li>
+              {% else %}
+              <li><a class="dropdown-item" href="{% url 'login' %}">Личный кабинет</a></li>
+              {% endif %}
+            <li><a class="dropdown-item" href="{% url 'add_publication' %}">Добавить публикацию</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Выйти</a></li>
           </ul>
@@ -40,7 +46,9 @@
       </ul>
              <form  class="d-flex" method="get">
       <input formmethod="get" class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" name = "search">
-      <button class="btn btn-outline-success" type="submit">Найти</button>
+                 <button class="btn btn-outline-success" type="submit"  >
+
+                     Найти</button>
         </form>
     </div>
   </div>

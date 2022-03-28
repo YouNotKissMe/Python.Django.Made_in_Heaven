@@ -20,6 +20,8 @@ def home(request):
             return render(request, 'home_page.html', {'pubplications': publication})
     else:
         publication = Publication.objects.all()
+        for i in publication:
+            print(i.id)
         return render(request, 'home_page.html', {'pubplications': publication})
 
 
